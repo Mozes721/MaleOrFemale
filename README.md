@@ -1,2 +1,2 @@
 # MaleOrFemale
-Male or Female image Classifier with PyQt as GUI to upload and check image
+Male or Female image Classifier with Kivy as GUI to upload and check image
