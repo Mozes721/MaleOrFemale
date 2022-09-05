@@ -1,28 +1,24 @@
 import kivy
 from kivy.app import App
 from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
+from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.lang import Builder
+import os
 
-Builder.load_string("""
-<MyWidget>:
-    id: my_widget
-    FileChooserIconView:
-        id: filechooser
-        on_selection: my_widget.selected(filechooser.selection)
-    Image:
-        id: image
-        source: ""
-""")
+# Designate Our .kv design file 
+Builder.load_file('menu.kv')
 
-class MyWidget(BoxLayout):
-    
-    def selected(self,filename):
-        try:
-            self.ids.image.source = filename[0]
-        except:
-            pass
+class MyWidget(GridLayout):
+    def open(self, path, filename):
+        with open(os.path.join(path, filename[0])) as f:
+            print(f.read())
+
+    def selected(self, filename):
+        self.ids.image.source = filename[0]
+        print("selected: %s" % filename[0])
+
 
 
 

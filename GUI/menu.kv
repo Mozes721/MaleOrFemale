@@ -1,0 +1,17 @@
+<MyWidget>:
+
+    cols: 2
+    rows: 2
+    id: my_widget
+    FileChooserListView:
+        id: filechooser
+        on_selection: my_widget.selected(filechooser.selection)
+    Image:
+        id: image
+        source: ""
+    Button:
+        text: 'Submit'
+        
+    Label:
+        id:classifierOutput
+        text:'Here you will get results'
