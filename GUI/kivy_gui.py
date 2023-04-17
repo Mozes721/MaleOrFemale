@@ -1,5 +1,4 @@
 import kivy
-from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
@@ -11,12 +10,12 @@ import os
 from classification.prediction_classifier import classify_image
 
 # Designate Our .kv design file 
-Builder.load_file('menu.kv')
+Builder.load_file('GUI/menu.kv')
 
 class MyWidget(GridLayout):
     def __init__(self, **kwargs):
         super(MyWidget, self).__init__(**kwargs)
-        self.model = load_model('../classification/mdeol.pickle')
+        self.model = load_model('classification/model.pickle')
 
     def open(self, path, filename):
         with open(os.path.join(path, filename[0])) as f:
@@ -28,13 +27,4 @@ class MyWidget(GridLayout):
         self.ids.label.text = 'Prediction: ' + classify_gender
 
 
-
-
-class GenderClassifierApp(App):
-    def build(self):
-        return MyWidget()
-
-
-if __name__ == '__main__':
-    GenderClassifierApp().run()
 
