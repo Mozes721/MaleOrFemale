@@ -4,3 +4,7 @@
 /Training
 /Validation
 __init__.py
+__init__.pyc
+/__pycache__
+test.jpg
+kaggle
