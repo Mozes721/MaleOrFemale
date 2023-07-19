@@ -1,12 +1,14 @@
 from GUI.kivy_gui import MyWidget
-from tensorflow.keras.models import load_model
 from kivy.app import App
+import pickle
 
 
 class GenderClassifierApp(App):
     def build(self):
-        model = 'model.pickle'
+        with open('classification/model.pickle', 'rb') as f:
+            model = pickle.load(f)
         return MyWidget(model)
+
 
 if __name__ == '__main__':
     GenderClassifierApp().run()
